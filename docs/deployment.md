@@ -13,19 +13,26 @@ The production files are generated in `dist/`.
 
 ## GitHub Pages
 
-GitHub Pages can host the static `dist/` output. If the site is deployed under a repository subpath, configure Vite's `base` option before deploying.
+GitHub Pages hosts the static `dist/` output through `.github/workflows/deploy.yml`.
 
-For `https://xiaof-xy.github.io/ma-small-journal/`, use:
+The app is configured for:
+
+```text
+https://xiaof-xy.github.io/ma-small-journal/
+```
+
+Because this deploys under a repository subpath, `vite.config.ts` sets:
 
 ```ts
-// vite.config.ts
 export default defineConfig({
   base: "/ma-small-journal/",
   plugins: [react()],
 });
 ```
 
-For a custom domain at the root, keep the default `/` base.
+In GitHub, open **Settings → Pages**, set **Source** to **GitHub Actions**, then push to `main`.
+
+If you later switch to a custom domain at the root, change `base` back to `/`.
 
 ## Netlify
 
@@ -39,4 +46,3 @@ No serverless function is required for the current single-device version.
 ## Future Backend
 
 Multiplayer rooms and AI review should be implemented behind a backend API. Do not put AI provider keys in the Vite frontend.
-
